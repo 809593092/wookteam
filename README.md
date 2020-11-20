@@ -12,17 +12,28 @@
 - [安装教程(服务器)](install/SERVER.md)
 - [安装教程(宝塔面板)](install/BT.md)
 
+## HTTPS BugFix
+```shell
+vi .env
+APP_DEBUG=false
+vi /resources/views/main.blade.php
+```
+
+```php
+@if( env('APP_DEBUG') )
+<link rel="stylesheet" href="{{ asset('css/iview.css') }}">
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+@else
+<link rel="stylesheet" href="{{ secure_asset('css/iview.css') }}">
+    <script src="{{ secure_asset('js/jquery.min.js') }}"></script>
+    <script src="{{ secure_asset('js/bootstrap.min.js') }}"></script>
+@endif
+```
+
 ## 官网地址
 
 - [https://www.wookteam.com](https://www.wookteam.com)
-
-## 演示地址
-
-- [https://demo.wookteam.com](https://demo.wookteam.com) (admin/123456)
-
-## 微信咨询
-
-- ![二维码](resources/assets/statics/other/wxqr.jpeg)
 
 ## 技术选型
 
